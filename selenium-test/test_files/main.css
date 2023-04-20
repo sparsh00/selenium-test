@@ -1,0 +1,33 @@
+#navcontainer ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#navcontainer li { margin: 0 0 .2em 0; }
+#navcontainer a
+{
+display: block;
+color: #FFF;
+background-color: #036;
+width: 9em;
+padding: .2em .8em;
+text-decoration: none;
+}
+
+#navcontainer a:hover
+{
+background-color: #369;
+color: #FFF;
+}
+
+#active a
+{
+display: block;
+color: #FFF;
+background-color: #600;
+width: 9em;
+padding: .2em .8em;
+text-decoration: none;
+}

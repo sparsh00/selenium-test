@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Selenium playground</title>
+<link rel="stylesheet" href="test_files/jquery-ui.css">
+<script src="test_files/jquery-1.9.1.js"></script>
+<script src="test_files/jquery-ui.js"></script>
+<link rel="stylesheet" href="test_files/main.css">
+<style>
+#draggable { width: 50px; height: 50px; padding: 0.5em; }
+</style>
+<script>
+$(document).ready(function() {
+
+	setTimeout(function() {
+		$("#delaytext").text("This text appeared after 10 secs!!");
+	}, 10000);
+
+	$("#hiddentext").hide();
+	$( "#togglehidden" ).click(function(){
+		$("#hiddentext").toggle();
+		return false;
+	});
+
+	$('.input-field').prop('disabled', true);
+	$('.button-field').prop('disabled', true);
+	$('.select-box').prop('disabled', true);
+
+	$("#alert").click(function(){
+		window.alert("Welcome to selenium playground");
+		return false;
+	})
+
+	$("#alert_with_input").click(function(){
+		var r = window.prompt("Whats your name ?","");
+		$("#alertreply").text(r);
+		return false;
+	})
+
+	$("#prompt").click(function(){
+		var r=confirm("Press a button");
+		if (r==true) {
+		    x = "You pressed OK!";
+		} else {
+		    x = "You pressed Cancel!";
+		}
+		$("#alertreply").text(x);
+		return false;
+	})
+
+	$( "#doubleclick" ).dblclick(function() {
+	  $("#random1").text("Random no. generated : " + Math.random());
+	  return false;
+	});
+
+	$('#rightclick').mousedown(function(event) {
+	    switch (event.which) {
+	        case 3:
+	        	$("#mouseclick").text("right click detected");
+	            break;
+	        default:
+	        	$("#mouseclick").text("not a right click");
+	    }
+	    return false;
+	});
+
+	var timeoutId = 0;
+
+	$('#clickandhold').mousedown(function() {
+	    timeoutId = setTimeout(function() {
+	    	$("#holdtext").text("It worked");
+	    }, 3000);
+	}).bind('mouseup mouseleave', function() {
+	    clearTimeout(timeoutId);
+	});
+
+	$("#hoverme").hover(
+	   function() {
+	      $("#hovertext").text("Hover in");
+	   },
+	   function() {
+	      $("#hovertext").text("Hover out");
+	   }
+	);
+
+});
+</script>
+<style>@media print {#ghostery-tracker-tally {display:none !important}}</style></head>
+
+
+<body>
+
+<h3> Something will happen after 10 secs </h3>
+<div id="delaytext">This text appeared after 10 secs!!</div>
+<br>
+
+
+<h3> Hidden field </h3>
+<p> Example hidden field with name="example" and value="data1"</p>
+<input type="hidden" name="example" value="data1">
+<br>
+
+<h3> Hidden element </h3>
+<p> There is a hidden div below with id="hiddentext" </p>
+<div id="hiddentext" style="display: none;"> Hello World</div>
+<a href="#" id="togglehidden">Toggle hidden</a>
+<br>
+
+<h3> Disabled element </h3>
+<p> This is a form with disabled elements </p>
+<form action="url" method="post">
+  <input type="text" class="input-field" value="Disabled text" disabled="disabled"><br>
+  <select class="select-box" disabled="disabled">
+    <option value="1" selected="selected">One</option>
+    <option value="1">Two</option>
+    <option value="1">Three</option>
+  </select>
+  <input type="button" class="button-field" value="Disabled button" disabled="disabled"><br>
+</form>
+<br>
+
+<h3> Alert boxes </h3>
+<a href="#" id="alert">Show alert box</a><br>
+<a href="#" id="alert_with_input">Show alert box with input</a><br>
+<a href="#" id="prompt">Show prompt box</a><br>
+<div id="alertreply"></div>
+<br>
+
+<h3> Double click </h3>
+<div id="doubleclick">
+  Double-click to generate a random number
+</div>
+<div id="random1"></div>
+<br>
+
+<h3> Right click </h3>
+<div id="rightclick" style="border:1px solid; padding:5px;">
+  Right click this div
+</div><br>
+<div id="mouseclick"></div>
+<br>
+
+<h3> Click and hold event </h3>
+<div id="holdtext" style="border:1px solid; padding:5px;"></div><br>
+<a href="#" id="clickandhold">Click and hold me for 3 secs</a>
+<br>
+
+<h3> Hover demo </h3>
+<div id="hovertext" style="border:1px solid; padding:5px;"></div><br>
+<a href="#" id="hoverme">Hover me</a>
+<br>
+
+
+
+
+</body></html>
